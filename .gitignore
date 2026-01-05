@@ -1,3 +1,14 @@
+# qegui .gitignore
+#
+# Top level files and directories
+#
+/bin/
+/lib/
+/include/
+/_pro
+
+# intermediate build files amd temp files
+#
 O.Common/
 O.linux-x86_64/
 O.linux-x86/
@@ -5,9 +16,6 @@ O.windows-x64/
 O.win32-x86/
 O.win32-x86-mingw/
 O.windows-x64-mingw/
-bin/
-lib/
-include/
 *.o
 *.so
 *.rc
@@ -22,3 +30,6 @@ include/
 Makefile.*
 object_script.*
 *~
+*.kate-swp
+
+# end
