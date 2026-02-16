@@ -1,5 +1,5 @@
 # File: qeguiApp/Makefile
-# DateTime: Mon May 26 17:15:52 2025
+# DateTime: Mon Feb 16 16:10:04 2026
 # Last checked in by: starritt
 #
 # This make file is the bridge beween the EPICS build system and the Qt project qmake/make paradigm.
@@ -55,6 +55,12 @@ else
 
 endif
 
+# Set default number of cores if not otherwise defined.
+#
+ifndef QE_NUMBER_OF_CORES
+   QE_NUMBER_OF_CORES = 4
+endif
+
 # Directories of interest.
 #
 SOURCE_DIR = project
@@ -85,7 +91,7 @@ install: $(TARGET)
 $(TARGET) : $(SOURCE_DIR)/$(MAKEFILE)  always
 	@echo "=== Building $(BINFILE) application"                 && \
 	cd  $(SOURCE_DIR)                                           && \
-	$(MAKE) -f $(MAKEFILE)  -j 3                                && \
+	$(MAKE) -f $(MAKEFILE)  -j $(QE_NUMBER_OF_CORES)            && \
 	echo "=== Complete"
 
 
