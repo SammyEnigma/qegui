@@ -3,6 +3,9 @@
 # This file is part of the EPICS QT Framework, and included into
 # and as part of the overall QEGui.pro project file.
 #
+# SPDX-FileCopyrightText: 2009-2026 Australian Synchrotron
+# SPDX-License-Identifier: LGPL-3.0-only
+#
 
 INCLUDEPATH += src
 
@@ -60,13 +63,23 @@ OTHER_FILES += src/AlarmColourSelection.ui
 OTHER_FILES += src/ArchiveNameSearch.ui
 OTHER_FILES += src/ArchiveStatus.ui
 OTHER_FILES += src/General_PV_Edit.ui
-OTHER_FILES += src/Plotter.ui
+OTHER_FILES += src/MainWindow.ui
+OTHER_FILES += src/MessageLog.ui
+OTHER_FILES += src/NTTable.ui
+OTHER_FILES += src/Opaque.ui
 OTHER_FILES += src/PVCorrelation.ui
 OTHER_FILES += src/PVDistribution.ui
+OTHER_FILES += src/PVLoadSave.ui
 OTHER_FILES += src/PVProperties.ui
+OTHER_FILES += src/Plotter.ui
 OTHER_FILES += src/ScratchPad.ui
 OTHER_FILES += src/StripChart.ui
+OTHER_FILES += src/Table.ui
 OTHER_FILES += src/WaveformHistogram.ui
+OTHER_FILES += src/aboutDialog.ui
+OTHER_FILES += src/manageConfigDialog.ui
+OTHER_FILES += src/restoreDialog.ui
+OTHER_FILES += src/saveDialog.ui
 
 OTHER_FILES += src/QEGuiIcon.png
 OTHER_FILES += src/QEGuiIcon.ico

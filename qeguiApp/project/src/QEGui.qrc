@@ -6,6 +6,8 @@
         <file>PVDistribution.ui</file>
         <file>StripChart.ui</file>
         <file>MessageLog.ui</file>
+        <file>NTTable.ui</file>
+        <file>Opaque.ui</file>
         <file>Plotter.ui</file>
         <file>Table.ui</file>
         <file>ScratchPad.ui</file>

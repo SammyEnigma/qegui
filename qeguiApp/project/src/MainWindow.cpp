@@ -3,7 +3,7 @@
  *  This file is part of the EPICS QT Framework, initially developed at the
  *  Australian Synchrotron.
  *
- *  SPDX-FileCopyrightText: 2009-2025 Australian Synchrotron
+ *  SPDX-FileCopyrightText: 2009-2026 Australian Synchrotron
  *  SPDX-License-Identifier: LGPL-3.0-only
  *
  *  Author:     author: Andrew Rhyder
@@ -1661,18 +1661,24 @@ QWidget* MainWindow::launchGui( QString guiName, QString title, QString customis
 // and a map of the target widget to receive a PV in each of the inbuilt forms
 void MainWindow::createActionMaps()
 {
-   // Build a map of inbuilt function names to forms
+   // Build a map of inbuilt function names to forms.
+   // Add both names as in the default customisation xml file and from the fraework.
+   // The text may be the same.
+   //
    inbuiltFormMap.clear();
    inbuiltFormMap.insert( QEActionRequests::actionGeneralPvEdit(),  ":/qe/gui/forms/General_PV_Edit.ui" );
    inbuiltFormMap.insert( QEActionRequests::actionPvProperties(),   ":/qe/gui/forms/PVProperties.ui" );
    inbuiltFormMap.insert( QEActionRequests::actionStripChart(),     ":/qe/gui/forms/StripChart.ui" );
    inbuiltFormMap.insert( QEActionRequests::actionScratchPad(),     ":/qe/gui/forms/ScratchPad.ui" );
-   inbuiltFormMap.insert( QEActionRequests::actionPlotter(),        ":/qe/gui/forms/Plotter.ui"),
-       inbuiltFormMap.insert( QEActionRequests::actionTable(),          ":/qe/gui/forms/Table.ui"),
-       inbuiltFormMap.insert( QEActionRequests::actionShowInHisogram(), ":/qe/gui/forms/WaveformHistogram.ui"),
-       inbuiltFormMap.insert( "Message Log...",                         ":/qe/gui/forms/MessageLog.ui" );
+   inbuiltFormMap.insert( QEActionRequests::actionPlotter(),        ":/qe/gui/forms/Plotter.ui");
+   inbuiltFormMap.insert( QEActionRequests::actionTable(),          ":/qe/gui/forms/Table.ui");
+   inbuiltFormMap.insert( QEActionRequests::actionShowInHistogram(), ":/qe/gui/forms/WaveformHistogram.ui");
+   inbuiltFormMap.insert( QEActionRequests::actionNTTable(),        ":/qe/gui/forms/NTTable.ui");
+   inbuiltFormMap.insert( QEActionRequests::actionOpaque(),         ":/qe/gui/forms/Opaque.ui");
+   inbuiltFormMap.insert( "Message Log...",                         ":/qe/gui/forms/MessageLog.ui" );
    inbuiltFormMap.insert( "Plotter...",                             ":/qe/gui/forms/Plotter.ui" );
    inbuiltFormMap.insert( "Table...",                               ":/qe/gui/forms/Table.ui" );
+   inbuiltFormMap.insert( "NT Table...",                            ":/qe/gui/forms/NTTable.ui" );
    inbuiltFormMap.insert( "Histogram...",                           ":/qe/gui/forms/WaveformHistogram.ui" );
    inbuiltFormMap.insert( "PV Load/Save...",                        ":/qe/gui/forms/PVLoadSave.ui" );
    inbuiltFormMap.insert( "PV Correlation...",                      ":/qe/gui/forms/PVCorrelation.ui" );
@@ -1681,18 +1687,22 @@ void MainWindow::createActionMaps()
    inbuiltFormMap.insert( "Archive Name Search...",                 ":/qe/gui/forms/ArchiveNameSearch.ui" );
    inbuiltFormMap.insert( "Alarm Colour Selection...",              ":/qe/gui/forms/AlarmColourSelection.ui" );
 
-   // Build a map of the target widget to receive a PV in each of the inbuilt forms
+   // Build a map of the target widget to receive a PV in each of the inbuilt forms.
+   //
    classNameMap.clear();
    classNameMap.insert( QEActionRequests::actionGeneralPvEdit(),    "QEGeneralEdit" );
    classNameMap.insert( QEActionRequests::actionPvProperties(),     "QEPvProperties" );
    classNameMap.insert( QEActionRequests::actionStripChart(),       "QEStripChart" );
    classNameMap.insert( QEActionRequests::actionScratchPad(),       "QEScratchPad" );
-   classNameMap.insert( QEActionRequests::actionPlotter(),          "QEPlotter"),
-       classNameMap.insert( QEActionRequests::actionTable(),            "QETable"),
-       classNameMap.insert( QEActionRequests::actionShowInHisogram(),   "QEWaveformHistogram" );
+   classNameMap.insert( QEActionRequests::actionPlotter(),          "QEPlotter");
+   classNameMap.insert( QEActionRequests::actionTable(),            "QETable");
+   classNameMap.insert( QEActionRequests::actionShowInHistogram(),  "QEWaveformHistogram" );
+   classNameMap.insert( QEActionRequests::actionNTTable(),          "QENTTable");
+   classNameMap.insert( QEActionRequests::actionOpaque(),           "QEOpaque");
    classNameMap.insert( "Message Log...",                           "QEMessageLog" );
    classNameMap.insert( "Plotter...",                               "QEPlotter" );
    classNameMap.insert( "Table...",                                 "QETable" );
+   classNameMap.insert( "NT Table...",                              "QENTTable" );
    classNameMap.insert( "PV Load/Save...",                          "QEPvLoadSave" );
    classNameMap.insert( "PV Correlation...",                        "QEPvCorrelation" );
    classNameMap.insert( "PV Distribution...",                       "QEDistribution" );
@@ -1702,18 +1712,19 @@ void MainWindow::createActionMaps()
 }
 
 // Slot for launching a new gui from a contained object.
-void  MainWindow::requestAction( const QEActionRequests & request )
+//
+void  MainWindow::requestAction( const QEActionRequests& request )
 {
    QStringList arguments =  request.getArguments();
 
-   switch( request.getKind () )
-   {
+   switch( request.getKind () ) {
 
       // Launching a new gui given a .ui file name
       case QEActionRequests::KindOpenFile:
          if (arguments.count() >= 1)
          {
-            launchGui ( arguments.first(), "", request.getCustomisation(), request.getOption(), false, request.getFormHandle() );
+            launchGui ( arguments.first(), "", request.getCustomisation(),
+                        request.getOption(), false, request.getFormHandle() );
          }
          break;
 
