@@ -25,14 +25,8 @@
  <customwidgets>
   <customwidget>
    <class>QEStripChart</class>
-   <extends>QEFrame</extends>
-   <header>QEStripChart.h</header>
-  </customwidget>
-  <customwidget>
-   <class>QEFrame</class>
    <extends>QFrame</extends>
-   <header>QEFrame.h</header>
-   <container>1</container>
+   <header>QEStripChart.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
