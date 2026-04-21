@@ -65,6 +65,7 @@ OTHER_FILES += src/ArchiveStatus.ui
 OTHER_FILES += src/General_PV_Edit.ui
 OTHER_FILES += src/MainWindow.ui
 OTHER_FILES += src/MessageLog.ui
+OTHER_FILES += src/NTNDArray.ui
 OTHER_FILES += src/NTTable.ui
 OTHER_FILES += src/Opaque.ui
 OTHER_FILES += src/PVCorrelation.ui

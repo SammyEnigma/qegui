@@ -768,9 +768,9 @@ MainWindow* MainWindow::launchLocalGui( const QString& filename, const QEFormMap
 // Launch a new gui, find QE widget by class name and paste PV name.
 // Used by gui requests.
 MainWindow* MainWindow::launchLocalGui( const QString& filename,
-                                       const QString& className,
-                                       const QString& pvName,
-                                       const QEFormMapper::FormHandles& formHandle )
+                                        const QString& className,
+                                        const QString& pvName,
+                                        const QEFormMapper::FormHandles& formHandle )
 {
    MainWindow* newWindow = NULL;
    QWidget* widget = NULL;
@@ -1673,6 +1673,7 @@ void MainWindow::createActionMaps()
    inbuiltFormMap.insert( QEActionRequests::actionPlotter(),        ":/qe/gui/forms/Plotter.ui");
    inbuiltFormMap.insert( QEActionRequests::actionTable(),          ":/qe/gui/forms/Table.ui");
    inbuiltFormMap.insert( QEActionRequests::actionShowInHistogram(), ":/qe/gui/forms/WaveformHistogram.ui");
+   inbuiltFormMap.insert( QEActionRequests::actionNTNDArray(),      ":/qe/gui/forms/NTNDArray.ui");
    inbuiltFormMap.insert( QEActionRequests::actionNTTable(),        ":/qe/gui/forms/NTTable.ui");
    inbuiltFormMap.insert( QEActionRequests::actionOpaque(),         ":/qe/gui/forms/Opaque.ui");
    inbuiltFormMap.insert( "Message Log...",                         ":/qe/gui/forms/MessageLog.ui" );
@@ -1697,6 +1698,7 @@ void MainWindow::createActionMaps()
    classNameMap.insert( QEActionRequests::actionPlotter(),          "QEPlotter");
    classNameMap.insert( QEActionRequests::actionTable(),            "QETable");
    classNameMap.insert( QEActionRequests::actionShowInHistogram(),  "QEWaveformHistogram" );
+   classNameMap.insert( QEActionRequests::actionNTNDArray(),        "QEImage");
    classNameMap.insert( QEActionRequests::actionNTTable(),          "QENTTable");
    classNameMap.insert( QEActionRequests::actionOpaque(),           "QEOpaque");
    classNameMap.insert( "Message Log...",                           "QEMessageLog" );
