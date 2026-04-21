@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <!--
 File: package/EPICS_Qt_Installer.wxs
-DateTime: Wed Feb 25 15:01:25 2026
+DateTime: Tue Mar 31 09:52:14 2026
 Last checked in by: starritt
 
 WiX configuration file used to create an msi installer for EPICS Qt,
@@ -51,20 +51,20 @@ candle_light.bat <version>
                     <Directory Id="INSTALLDIR" Name="EPICS Qt">
 
                         <Component Id="MainExecutable" Guid="ECC3208E-71D2-4C73-AE84-A628A752D06F">
-                            <File Id="qeguiEXE" DiskId="1" Source="C:\jenkins_builds\qegui\bin\windows-x64-mingw\qegui.exe" KeyPath="yes"/>
+                            <File Id="qeguiEXE" DiskId="1" Source="C:\gui\qegui\bin\windows-x64-mingw\qegui.exe" KeyPath="yes"/>
                         </Component>
                         <Component Id="QeGUIWrapperScript" Guid="2E4733E8-A2BD-4C0E-AA61-6D095EDA0797">
-                            <File Id="runQeGuiBAT" DiskId="1" Source="C:\jenkins_builds\qegui\package\run_qegui.bat" KeyPath="yes">
+                            <File Id="runQeGuiBAT" DiskId="1" Source="C:\gui\qegui\package\run_qegui.bat" KeyPath="yes">
                                 <Shortcut Id="startmenuQEGui" Directory="ProgramMenuDir" Arguments="-o" Name="QEGui" WorkingDirectory="QEGuiWorkingDir" Icon="qegui.exe" IconIndex="0" Advertise="yes"/>
                                 <Shortcut Id="desktopQEGui" Directory="DesktopFolder" Arguments="-o" Name="QEGui" WorkingDirectory="QEGuiWorkingDir" Icon="qegui.exe" IconIndex="0" Advertise="yes"/>
                             </File>
                         </Component>
 
                         <Component Id="SecondExecutable" Guid="44F2C19D-4931-40E9-89FD-DCC3CBF4AB49">
-                            <File Id="qeradEXE" DiskId="1" Source="C:\jenkins_builds\qeReadArchive\bin\windows-x64-mingw\qerad.exe" KeyPath="yes"/>
+                            <File Id="qeradEXE" DiskId="1" Source="C:\gui\qeReadArchive\bin\windows-x64-mingw\qerad.exe" KeyPath="yes"/>
                         </Component>
                         <Component Id="QeRadWrapperScript" Guid="70429F29-D104-4245-B42B-3E0FDF09B9FA">
-                            <File Id="runQeRadBAT" DiskId="1" Source="C:\jenkins_builds\qegui\package\run_qerad.bat" KeyPath="yes"/>
+                            <File Id="runQeRadBAT" DiskId="1" Source="C:\gui\qegui\package\run_qerad.bat" KeyPath="yes"/>
                         </Component>
 
                         <Component Id="QtLibs" Guid="FC4D4D2A-FBFF-4CF3-8439-063C552D8B3E">
@@ -104,10 +104,10 @@ candle_light.bat <version>
                             <Environment Id="EPICS_CA_MAX_ARRAY_BYTES" Name="EPICS_CA_MAX_ARRAY_BYTES" Value="50000000" Permanent="no" Action="create" System="yes"/>
                         </Component>
                         <Component Id="QEFramework" Guid="8638480C-032C-439D-8D54-81104BAF3703">
-                            <File Id="QEFrameworkDLL" DiskId="1" Source="C:\jenkins_builds\qeframework\lib\windows-x64-mingw\QEFramework.dll" KeyPath="yes"/>
+                            <File Id="QEFrameworkDLL" DiskId="1" Source="C:\gui\qeframework\lib\windows-x64-mingw\QEFramework.dll" KeyPath="yes"/>
                             <File Id="libprotobufDLL" DiskId="1" Source="C:\Qt6\Tools\mingw1120_64\bin\libprotobuf.dll"/>
-                            <File Id="archapplSupDLL" DiskId="1" Source="C:\jenkins_builds\qeframework\bin\windows-x64-mingw\archapplData.dll"/>
-                            <File Id="acaiDLL" DiskId="1" Source="C:\jenkins_builds\acai\bin\windows-x64-mingw\acai.dll"/>
+                            <File Id="archapplSupDLL" DiskId="1" Source="C:\gui\qeframework\bin\windows-x64-mingw\archapplData.dll"/>
+                            <File Id="acaiDLL" DiskId="1" Source="C:\epics\acai\bin\windows-x64-mingw\acai.dll"/>
                             <Environment Id="QE_FRAMEWORK" Name="QE_FRAMEWORK" Value="[INSTALLDIR]" Permanent="no" Action="create" System="yes"/>
                             <Environment Id="QE_ARCHIVE_TYPE" Name="QE_ARCHIVE_TYPE" Value="ARCHAPPL" Permanent="no" Action="create" System="yes"/>
                             <!-- QE_ARCHIVE_LIST is defined in run_qegui.bat -->
@@ -118,16 +118,16 @@ candle_light.bat <version>
                             <File Id="Qt6DesignerComponentsDLL" DiskId="1" Source="C:\Qt6\6.4.2\mingw_64\bin\Qt6DesignerComponents.dll"/>
                         </Component>
                         <Component Id="QtDesignerWrapperScript" Guid="3CE8E7D0-29D3-4A2A-B802-06D596729D75">
-                            <File Id="runQtDesignerBAT" DiskId="1" Source="C:\jenkins_builds\qegui\package\run_qt_designer.bat" KeyPath="yes">
+                            <File Id="runQtDesignerBAT" DiskId="1" Source="C:\gui\qegui\package\run_qt_designer.bat" KeyPath="yes">
                                 <Shortcut Id="startmenuDesigner" Directory="ProgramMenuDir" Name="QT Designer" WorkingDirectory="INSTALLDIR" Icon="designer.exe" IconIndex="0" Advertise="yes"/>
                                 <Shortcut Id="desktopDesigner" Directory="DesktopFolder" Name="QT Designer" WorkingDirectory="INSTALLDIR" Icon="designer.exe" IconIndex="0" Advertise="yes"/>
                             </File>
                         </Component>
                         <Directory Id="designerDir" Name="designer">
                             <Component Id="QTPlugins" Guid="00BEE237-3046-45BF-9E11-6193C60EC20A">
-                                <File Id="QEPluginDLL" DiskId="1" Source="C:\jenkins_builds\qeframework\lib\windows-x64-mingw\designer\QEPlugin.dll" KeyPath="yes"/>
-                                <File Id="fsmPluginDLL" DiskId="1" Source="C:\jenkins_builds\qtfsm\lib\windows-x64-mingw\designer\fsm_plugin.dll"/>
-                                <File Id="vclPluginDLL" DiskId="1" Source="C:\jenkins_builds\qevcl\lib\windows-x64-mingw\designer\vcl_plugin.dll"/>
+                                <File Id="QEPluginDLL" DiskId="1" Source="C:\gui\qeframework\lib\windows-x64-mingw\designer\QEPlugin.dll" KeyPath="yes"/>
+                                <File Id="fsmPluginDLL" DiskId="1" Source="C:\acc\qtfsm\lib\windows-x64-mingw\designer\fsm_plugin.dll"/>
+                                <File Id="vclPluginDLL" DiskId="1" Source="C:\gui\qevcl\lib\windows-x64-mingw\designer\vcl_plugin.dll"/>
                                 <File Id="qwtPluginDLL" DiskId="1" Source="C:\Qwt-6.2.0-dev\plugins\designer\qwt_designer_plugin.dll"/>
                             </Component>
                         </Directory>
@@ -180,14 +180,14 @@ candle_light.bat <version>
             <ComponentRef Id="ProgramMenuDir"/>
         </Feature>
 
-        <Icon Id="qegui.exe" SourceFile="C:\jenkins_builds\qegui\bin\windows-x64-mingw\qegui.exe"/>
-        <Icon Id="qerad.exe" SourceFile="C:\jenkins_builds\qeReadArchive\bin\windows-x64-mingw\qerad.exe"/>
+        <Icon Id="qegui.exe" SourceFile="C:\gui\qegui\bin\windows-x64-mingw\qegui.exe"/>
+        <Icon Id="qerad.exe" SourceFile="C:\gui\qeReadArchive\bin\windows-x64-mingw\qerad.exe"/>
         <Icon Id="designer.exe" SourceFile="C:\Qt6\6.4.2\mingw_64\bin\designer.exe"/>
         <Property Id="ARPPRODUCTICON" Value="qegui.exe"/>
         <UIRef Id="WixUI_Minimal"/>
 
         <UIRef Id="WixUI_ErrorProgressText"/>
-        <WixVariable Id="WixUILicenseRtf" Value="C:\jenkins_builds\qegui\package\LICENSE.rtf"/>
+        <WixVariable Id="WixUILicenseRtf" Value="C:\gui\qegui\package\LICENSE.rtf"/>
         <InstallExecuteSequence>
             <Custom Action="NoDowngrade" After="FindRelatedProducts">NEWERFOUND</Custom>
         </InstallExecuteSequence>
