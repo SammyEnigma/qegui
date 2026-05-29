@@ -16,6 +16,8 @@ O.windows-x64/
 O.win32-x86/
 O.win32-x86-mingw/
 O.windows-x64-mingw/
+.qtc_clangd/
+.cache/
 *.o
 *.so
 *.rc
@@ -26,7 +28,7 @@ O.windows-x64-mingw/
 *.creator.user
 *.pro.user
 .qmake.stash
-.qtc_clangd
+*.idx
 Makefile.*
 object_script.*
 *~
